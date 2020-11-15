@@ -34,3 +34,24 @@ if (! function_exists('resolve_pagination_links')) {
         return $response;
     }
 }
+
+if (! function_exists('goddamn_account_owner')) {
+    /**
+     * Return a valid account owner based on the issue WE KNOW ABOUT.
+     *
+     * @param $accountOwner
+     *
+     * @return string
+     */
+    function goddamn_account_owner($accountOwner)
+    {
+        if (is_string($accountOwner)) {
+            return json_decode($this->account_owners)[0]->firstName . ' ' . json_decode($this->account_owners)[0]->lastName;
+        }
+        else if (is_array($accountOwner)) {
+            return $accountOwner[0]['firstName'] . ' ' . $accountOwner[0]['lastName'];
+        } else {
+            return 'Check it manually.';
+        }
+    }
+}

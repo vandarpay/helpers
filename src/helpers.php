@@ -30,5 +30,7 @@ if (! function_exists('resolve_pagination_links')) {
             $response['links']['prev']) : null;
 
         $response['meta']['path'] = strtok($response['links']['first'], '?');
+
+        return $response;
     }
 }
